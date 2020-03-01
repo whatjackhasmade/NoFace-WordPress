@@ -1,0 +1,101 @@
+{
+  "key": "group_5c24dd550ef15",
+  "title": "Component: Heading",
+  "fields": [
+    {
+      "key": "field_5c24ddaf676cf",
+      "label": "Text",
+      "name": "text",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_5c24ddb6676d0",
+      "label": "Level",
+      "name": "level",
+      "type": "select",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "1": "Heading One",
+        "2": "Heading Two",
+        "3": "Heading Three",
+        "4": "Heading Four",
+        "5": "Heading Five",
+        "6": "Heading Six"
+      },
+      "default_value": [2],
+      "allow_null": 0,
+      "multiple": 0,
+      "ui": 0,
+      "return_format": "value",
+      "ajax": 0,
+      "placeholder": ""
+    },
+    {
+      "key": "field_5c24ddf5676d1",
+      "label": "Semantic Level",
+      "name": "semantic_level",
+      "type": "select",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "1": "Heading One",
+        "2": "Heading Two",
+        "3": "Heading Three",
+        "4": "Heading Four",
+        "5": "Heading Five",
+        "6": "Heading Six"
+      },
+      "default_value": [2],
+      "allow_null": 0,
+      "multiple": 0,
+      "ui": 0,
+      "return_format": "value",
+      "ajax": 0,
+      "placeholder": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/heading"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": 1,
+  "description": "",
+  "modified": 1545920030
+}

@@ -1,3 +1,27 @@
+# ignore everything in the root except the "wp-content" directory.
+!wp-content/
+
+# ignore everything in the "wp-content" directory, except:
+# "mu-plugins", "plugins", "themes" directory
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/plugins/
+!wp-content/themes/
+
+# ignore these plugins
+wp-content/plugins/hello.php
+
+# ignore specific themes
+wp-content/themes/twenty*/
+
+# ignore node dependency directories
+node_modules/
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
 # Application
 web/app/plugins/*
 !web/app/plugins/.gitkeep
@@ -5,13 +29,13 @@ web/app/mu-plugins/*/
 web/app/upgrade
 web/app/uploads/*
 !web/app/uploads/.gitkeep
-!web/app/mu-plugins/wp-sync-db
-!web/app/mu-plugins/wp-sync-db-media-files
-
 
 # WordPress
 web/wp
 web/.htaccess
+
+# Logs
+*.log
 
 # Dotenv
 .env
@@ -23,9 +47,6 @@ web/.htaccess
 
 # WP-CLI
 wp-cli.local.yml
-
-# Debugging
-web/app/debug.log
 
 
 # Created by https://www.gitignore.io/api/node,macos,windows,wordpress
@@ -82,6 +103,7 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
+*.lcov
 
 # nyc test coverage
 .nyc_output
@@ -104,6 +126,9 @@ jspm_packages/
 
 # TypeScript v1 declaration files
 typings/
+
+# TypeScript cache
+*.tsbuildinfo
 
 # Optional npm cache directory
 .npm
@@ -133,6 +158,18 @@ typings/
 # nuxt.js build output
 .nuxt
 
+# rollup.js default build output
+dist/
+
+# Uncomment the public line if your project uses Gatsby
+# https://nextjs.org/blog/next-9-1#public-directory-support
+# https://create-react-app.dev/docs/using-the-public-folder/#docsNav
+# public
+
+# Storybook build outputs
+.out
+.storybook-out
+
 # vuepress build output
 .vuepress/dist
 
@@ -145,9 +182,14 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
+# Temporary folders
+tmp/
+temp/
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
+Thumbs.db:encryptable
 ehthumbs.db
 ehthumbs_vista.db
 
@@ -171,24 +213,29 @@ $RECYCLE.BIN/
 *.lnk
 
 ### WordPress ###
-wp-config.php
-wp-content/advanced-cache.php
-wp-content/backup-db/
-wp-content/backups/
-wp-content/blogs.dir/
-wp-content/cache/
-wp-content/upgrade/
-wp-content/uploads/
-wp-content/mu-plugins/
-wp-content/wp-cache-config.php
+# ignore everything in the root except the "wp-content" directory.
+!wp-content/
+
+# ignore everything in the "wp-content" directory, except:
+# "mu-plugins", "plugins", "themes" directory
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/plugins/
+!wp-content/themes/
+
+# ignore these plugins
 wp-content/plugins/hello.php
 
-/.htaccess
-/license.txt
-/readme.html
-/sitemap.xml
-/sitemap.xml.gz
+# ignore specific themes
+wp-content/themes/twenty*/
+
+# ignore node dependency directories
+
+# ignore log files and databases
+*.sql
+*.sqlite
 
 # End of https://www.gitignore.io/api/node,macos,windows,wordpress
-
+package-lock.json
 composer.lock
+web/app/themees/noface/dist

@@ -1,0 +1,58 @@
+{
+  "key": "group_5c2f3ce54a81c",
+  "title": "Component: Section",
+  "fields": [
+    {
+      "key": "field_5c2f3cef8683f",
+      "label": "Background Colour",
+      "name": "background_colour",
+      "type": "color_picker",
+      "instructions": "",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "#141213"
+    },
+    {
+      "key": "field_5c2f3d3386840",
+      "label": "Content",
+      "name": "content",
+      "type": "wysiwyg",
+      "instructions": "",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "tabs": "all",
+      "toolbar": "full",
+      "media_upload": 1,
+      "delay": 0
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/section"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": 1,
+  "description": "",
+  "modified": 1546599766
+}
