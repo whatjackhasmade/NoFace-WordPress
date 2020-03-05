@@ -62,10 +62,23 @@ class StarterSite extends Timber\Site
     add_action('init', array($this, 'register_menus'));
     add_action('init', array($this, 'register_post_types'));
     add_action('init', array($this, 'register_taxonomies'));
+    add_action('acf/init', array($this, 'setup_acf_init'));
     add_action('after_setup_theme', array($this, 'theme_supports'));
+    add_filter(
+      'block_categories',
+      array($this, 'register_block_categories'),
+      10,
+      2
+    );
+    add_action('enqueue_block_editor_assets', array(
+      $this,
+      'setup_editor_styles'
+    ));
     add_filter('timber/context', array($this, 'add_to_context'));
     add_filter('timber/twig', array($this, 'add_to_twig'));
     add_filter('upload_mimes', array($this, 'cc_mime_types'));
+    add_action('wp_enqueue_scripts', array($this, 'setup_styles'));
+    add_action('init', array($this, 'open_cors'), 15);
     add_image_size('largest', 2560, '', true); // Largest Desktops
     add_image_size('desktop', 1920, '', true); // Large Desktops
     add_image_size('laptop', 1366, '', true); // Laptops
@@ -78,6 +91,28 @@ class StarterSite extends Timber\Site
     remove_action('wp_print_styles', 'print_emoji_styles');
     parent::__construct();
   }
+
+  function open_cors()
+  {
+    header("Access-Control-Allow-Origin: *");
+  }
+
+  public function setup_editor_styles()
+  {
+    wp_enqueue_style(
+      'main-stylesheet',
+      get_template_directory_uri() . '/dist/css/editor.css'
+    );
+  }
+
+  public function setup_styles()
+  {
+    wp_enqueue_style(
+      'main-stylesheet',
+      get_template_directory_uri() . '/dist/css/index.css'
+    );
+  }
+
   /** This is where you can register custom post types. */
   public function register_post_types()
   {
@@ -114,6 +149,54 @@ class StarterSite extends Timber\Site
   /** This is where you can register custom taxonomies. */
   public function register_taxonomies()
   {
+  }
+
+  public function register_block_categories($categories, $post)
+  {
+    return array_merge($categories, array(
+      array(
+        'slug' => 'noface',
+        'title' => __('NoFace', 'noface')
+      )
+    ));
+  }
+
+  public function register_blocks()
+  {
+    if (function_exists('acf_register_block')) {
+      /*
+       * Create array of custom ACF guteneberg blocks
+       * Key: Name of the block in slug form (lowercase & hyphentated)
+       * Value: Dashicon icon assigned for editor
+       */
+      $customBlocks = array(
+        'grid' => 'align-right',
+        'hero' => 'format-video',
+        'services' => 'image-filter'
+      );
+
+      foreach ($customBlocks as $b => $v) {
+        $settings = array(
+          'align' => 'full',
+          'category' => 'noface',
+          'description' => 'A custom ' . $b . ' block.',
+          'icon' => $v,
+          'mode' => 'auto',
+          'name' => $b,
+          'enqueue_assets' => array($this, 'enqueue_block_assets'),
+          'render_callback' => array($this, 'render_block'),
+          'title' => ucfirst($b)
+        );
+
+        // Register a new block.
+        acf_register_block_type($settings);
+      }
+    }
+  }
+
+  public function setup_acf_init()
+  {
+    acf_update_setting('google_api_key', getenv('GOOGLE_API_KEY'));
   }
 
   public function cc_mime_types($mimes)
@@ -166,6 +249,15 @@ class StarterSite extends Timber\Site
     add_theme_support('align-wide');
     add_theme_support('disable-custom-colors');
     add_theme_support('disable-custom-font-sizes');
+
+    if (function_exists('acf_add_options_page')) {
+      acf_add_options_page(array(
+        'page_title' => 'Global Settings',
+        'menu_title' => 'Global Settings',
+        'menu_slug' => 'global-settings',
+        'capability' => 'edit_posts'
+      ));
+    }
   }
 
   /** This is where you can add your own functions to twig.
