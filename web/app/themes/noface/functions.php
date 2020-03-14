@@ -106,9 +106,9 @@ class StarterSite extends Timber\Site
     $uri = $slug ? strstr($uri, $slug, true) : $uri;
 
     $page_url =
-      'http://localhost:7774/iframe.html?id=pages-preview--preview-page';
+      'https://noface-storybook.netlify.com/iframe.html?id=pages-preview--preview-page';
     $post_url =
-      'http://localhost:7774/iframe.html?id=pages-preview--preview-post';
+      'https://noface-storybook.netlify.com/iframe.html?id=pages-preview--preview-post';
 
     if ($post_type === "post") {
       return $post_url . '&uri=' . $uri;
