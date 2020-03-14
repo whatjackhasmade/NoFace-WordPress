@@ -74,6 +74,7 @@ class StarterSite extends Timber\Site
       $this,
       'setup_editor_styles'
     ));
+    add_action('wp', array($this, 'wph_frontend_redirect'));
     add_filter('preview_post_link', array($this, 'custom_reroute'));
     add_filter('timber/context', array($this, 'add_to_context'));
     add_filter('timber/twig', array($this, 'add_to_twig'));
@@ -95,16 +96,57 @@ class StarterSite extends Timber\Site
 
   public function custom_reroute()
   {
-    $slug = basename(get_permalink());
     $id = url_to_postid(get_permalink());
     $title = get_the_title($id);
     $revision = wp_get_post_revision($id);
     $post_type = get_post_type($revision->post_parent);
+    $slug = get_post_field('post_name', $id);
+    $uri = get_page_uri($id);
+
+    $uri = $slug ? strstr($uri, $slug, true) : $uri;
+
+    $page_url =
+      'http://localhost:7774/iframe.html?id=pages-preview--preview-page';
+    $post_url =
+      'http://localhost:7774/iframe.html?id=pages-preview--preview-post';
 
     if ($post_type === "post") {
-      return "http://localhost:7774/iframe.html?id=pages-preview--preview-post&title=$title";
+      return $post_url . '&uri=' . $uri;
     } else {
-      return "http://localhost:7774/iframe.html?id=pages-preview--preview-page&title=$title";
+      return $page_url . '&uri=' . $uri;
+    }
+  }
+
+  /**Function to check user status and redirect as appropriately */
+  public function wph_frontend_redirect()
+  {
+    if (!is_admin()) {
+      global $wp_query;
+
+      $post_ID = get_the_id();
+      $homepage_id = get_option('page_on_front');
+      $blogpage_id = get_option('page_for_posts');
+
+      if (
+        $homepage_id === $post_ID ||
+        $blogpage_id === $post_ID ||
+        is_front_page()
+      ) {
+        wp_safe_redirect(get_admin_url()); // If not an individual post, we redirect to the standard admin.
+        exit();
+      } else {
+        $post_edit_link = admin_url(
+          'post.php?post=' . $post_ID . '&action=edit'
+        );
+
+        if (is_user_logged_in()) {
+          wp_safe_redirect($post_edit_link); // Logged in users go to the post edit screen.
+          exit();
+        } else {
+          wp_safe_redirect(wp_login_url($post_edit_link)); // Not logged in users take a detour via the login page.
+          exit();
+        }
+      }
     }
   }
 
