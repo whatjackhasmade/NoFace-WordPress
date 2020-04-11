@@ -1,50 +1,64 @@
 {
-	"name": "noface-wordpress",
-	"version": "2.0.0",
-	"description": "",
-	"main": "index.js",
-	"repository": {
-		"type": "git"
-	},
-	"author": "Jack Pritchard",
-	"browerslist": [
-		"last 2 versions"
-	],
-	"dependencies": {},
-	"devDependencies": {
-		"@babel/core": "^7.8.6",
-		"@babel/polyfill": "^7.8.3",
-		"@babel/preset-env": "^7.8.6",
-		"@babel/preset-react": "^7.0.0",
-		"@prettier/plugin-php": "^0.13.0",
-		"babel-loader": "^8.0.6",
-		"babel-preset-es2015": "^6.24.1",
-		"browser-sync": "^2.26.3",
-		"gulp": "^4.0.2",
-		"gulp-autoprefixer": "^7.0.1",
-		"gulp-babel": "^8.0.0-beta.2",
-		"gulp-clean-css": "^4.0.0",
-		"gulp-concat": "^2.6.1",
-		"gulp-imagemin": "^7.1.0",
-		"gulp-notify": "^3.2.0",
-		"gulp-plumber": "^1.2.1",
-		"gulp-sass": "^4.0.2",
-		"gulp-sass-glob": "^1.0.9",
-		"gulp-sourcemaps": "^2.6.4",
-		"gulp-uglify": "^3.0.1",
-		"gulp-uglify-es": "^2.0.0",
-		"normalize.css": "^8.0.1",
-		"npm-check": "^5.9.1",
-		"path": "^0.12.7",
-		"prettier": "^1.19.1"
-	},
-	"scripts": {
-		"d": "gulp --gulpfile gulpfile.js",
-		"dev": "gulp --gulpfile gulpfile.js",
-		"develop": "gulp --gulpfile gulpfile.js",
-		"format": "prettier --write \"web/app/themes/noface/**/*.{php,css,scss,js,jsx,ts,tsx,json,md}\"",
-		"postinstall": "git submodule update --init --recursive || true",
-		"upgrade": "npm-check --update",
-		"upgrade-interactive": "npm-check --update"
-	}
+  "name": "noface-wordpress",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git"
+  },
+  "author": "Jack Pritchard (@whatjackhasmade)",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "@prettier/plugin-php": "^0.14.0",
+    "babel-loader": "^8.1.0",
+    "babel-preset-es2015": "^6.24.1",
+    "bootstrap": "^4.4.1",
+    "browser-sync": "^2.26.3",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "imagemin-webpack-plugin": "^2.4.2",
+    "import-glob-loader": "^1.1.0",
+    "laravel-mix": "^5.0.4",
+    "normalize.css": "^8.0.1",
+    "npm-check": "^5.9.2",
+    "path": "^0.12.7",
+    "prettier": "^2.0.4",
+    "prettier-plugin-twig-melody": "^0.4.2",
+    "sass": "^1.26.3",
+    "sass-loader": "^8.0.2",
+    "tiny-slider": "^2.9.2"
+  },
+  "scripts": {
+    "d": "npm run watch",
+    "dev": "npm run watch",
+    "develop": "npm run watch",
+    "format": "prettier --write \"**/*.{css,scss,js,jsx,ts,tsx,json,md,php,twig}\"",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "mix-development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "upgrade": "npm-check --update",
+    "upgrade-interactive": "npm-check --update",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch-poll": "npm run watch -- --watch-poll"
+  }
 }

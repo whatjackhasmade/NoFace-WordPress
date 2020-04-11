@@ -3,5 +3,9 @@
 	"semi": false,
 	"singleQuote": false,
 	"tabWidth": 2,
-	"trailingComma": "es5"
+	"trailingComma": "es5",
+	"plugins": [
+    "./node_modules/@prettier/plugin-php",
+    "./node_modules/prettier-plugin-twig-melody"
+  ]
 }

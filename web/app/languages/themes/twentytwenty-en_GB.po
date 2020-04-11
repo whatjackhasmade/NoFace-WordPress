@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Twenty package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-03-31 21:16:41+0000\n"
+"PO-Revision-Date: 2020-04-05 16:11:52+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -59,7 +59,7 @@ msgstr "With seven floors of striking architecture, UMoMA shows exhibitions of i
 
 #: inc/starter-content.php:129
 msgid "&#8220;Cyborgs, as the philosopher Donna Haraway established, are not reverent. They do not remember the cosmos.&#8221;"
-msgstr "&#8220;Cyborgs, as the philosopher Donna Haraway established, are not reverent. They do not remember the cosmos.&#8221;"
+msgstr "\"Cyborgs, as the philosopher Donna Haraway established, are not reverent. They do not remember the cosmos\"."
 
 #: inc/starter-content.php:113
 msgid "From Signac to Matisse"
@@ -505,7 +505,7 @@ msgstr "Theme Options"
 
 #: classes/class-twentytwenty-customize.php:101
 msgid "Header &amp; Footer Background Color"
-msgstr "Header &amp; Footer Background Colour"
+msgstr "Header & Footer Background Colour"
 
 #: classes/class-twentytwenty-customize.php:82
 msgid "Scales the logo to half its uploaded size, making it sharp on high-res screens."

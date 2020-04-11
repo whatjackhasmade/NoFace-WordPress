@@ -1,8 +1,16 @@
 .cache
 package.json
 package-lock.json
+config
 dist
 public
 vendor
 node_modules
 acf-json
+web/*.php
+web/wp
+web/app/languages
+web/app/mu-plugins
+web/app/plugins
+web/app/uploads
+web/app/wflogs
