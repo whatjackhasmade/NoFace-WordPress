@@ -201,7 +201,10 @@ class StarterSite extends Timber\Site
       'show_in_rest' => true,
       'menu_icon' => 'dashicons-money',
       'can_export' => true,
-      'taxonomies' => array('post_tag', 'category')
+      'taxonomies' => array('post_tag', 'category'),
+      'show_in_graphql' => true,
+      'graphql_single_name' => 'CaseStudy',
+      'graphql_plural_name' => 'CaseStudies'
     ));
   }
   /** This is where you can register custom taxonomies. */
@@ -230,6 +233,7 @@ class StarterSite extends Timber\Site
       $customBlocks = array(
         'grid' => 'align-right',
         'hero' => 'format-video',
+        'posts' => 'rss',
         'services' => 'image-filter',
         'signposts' => 'align-right'
       );
