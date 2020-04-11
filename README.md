@@ -64,21 +64,6 @@ SECURE_AUTH_SALT='dr+MB|eM/E(W+&Ec{}S7//iw4iT94UEpgl)we{u7lrC0HKa#V-x2*;y5p$z0`?
 LOGGED_IN_SALT=':e,vdA4x>e/{-|_Bak]D-kHtMJFs-xkhlZO&68NBtJHvgvt6Z&uMCbx>W^IW}oVC'
 NONCE_SALT='Z(x?[,-v&sNK.s7tq@%niVnyt>JC|^1)@Hr^0axzTWHR$-fw?B@mVX1p{bnPN[;!'
 
-ACF_PRO_KEY='b3JkZXJfaWQ9MTMyMTM4fHR5cGU9ZGV2ZWxvcGVyfGRhdGU9MjAxOC0wNS0yOSAxNDoyMjoxMg=='
+ACF_PRO_KEY='INSERT_KEY_HERE'
 GOOGLE_API_KEY='INSERT_KEY_HERE'
 ```
-
-## Documentation
-
-### Bedrock
-
-Bedrock documentation is available at [https://roots.io/bedrock/docs/](https://roots.io/bedrock/docs/).
-
-## Future Improvements
-
-- Include XML file of sample content, and directory of media that is automatically imported on install
-- Automatically set permalink and homepage settings on install
-- Include setup instructions for phpcs & eslint
-- Add Dockerfile for alternative local development
-- Add deployment instructions
-- Add unit tests
