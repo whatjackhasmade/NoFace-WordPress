@@ -3,13 +3,41 @@
     "title": "Block: Posts",
     "fields": [
         {
+            "key": "field_5e92dfab2022a",
+            "label": "Show All",
+            "name": "show_all",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_5e91d754f14e7",
             "label": "Items",
             "name": "items",
             "type": "relationship",
             "instructions": "",
             "required": 1,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e92dfab2022a",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -51,5 +79,5 @@
     "description": "",
     "show_in_graphql": 1,
     "graphql_field_name": "AcfPostsFields",
-    "modified": 1586616275
+    "modified": 1586683848
 }
