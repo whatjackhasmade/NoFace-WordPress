@@ -45,11 +45,14 @@
             },
             "show_in_graphql": 1,
             "post_type": [
-                "post"
+                "case-study",
+                "post",
+                "page"
             ],
             "taxonomy": "",
             "filters": [
                 "search",
+                "post_type",
                 "taxonomy"
             ],
             "elements": [
@@ -79,5 +82,5 @@
     "description": "",
     "show_in_graphql": 1,
     "graphql_field_name": "AcfPostsFields",
-    "modified": 1586683848
+    "modified": 1586858657
 }
